@@ -1,0 +1,53 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# iOS App (Xcode)
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+*.xcuserstate
+*.xcscmblueprint
+DerivedData/
+build/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+.swiftpm/
+Package.resolved
+.build/
+xcshareddata/swiftpm/Package.resolved
+
+# CocoaPods (if used)
+Pods/
+Podfile.lock
+
+# Carthage (if used)
+Carthage/Build/
+
+# Swift Package Manager
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+
+# Logs
+*.log
+
+# Environment variables
+secrets.xcconfig
+
+# Temporary files
+*.tmp
+*.temp

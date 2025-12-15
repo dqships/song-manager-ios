@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
+    <entity name="UserProfileEntity" representedClassName="UserProfileEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="artistName" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="hasCompletedOnboarding" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <attribute name="distributorCustomName" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="distributorPreset" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="defaultContributionsRaw" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="ipi" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="mainPRO" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="songwriterName" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="CollaboratorEntity" representedClassName="CollaboratorEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="artistName" optional="NO" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="defaultContributionsRaw" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="ipi" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="preferredPRO" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="songwriterName" optional="NO" attributeType="String" usesScalarValueType="NO"/>
+        <relationship name="links" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SongCollaboratorLinkEntity" inverseName="collaborator" inverseEntity="SongCollaboratorLinkEntity"/>
+    </entity>
+    <entity name="SongEntity" representedClassName="SongEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="checklistDistributorSubmitted" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <attribute name="checklistHfa" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <attribute name="checklistMlc" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <attribute name="checklistMusicReports" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <attribute name="checklistPro" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <attribute name="checklistSoundExchange" optional="NO" attributeType="Boolean" usesScalarValueType="YES" defaultValueString="NO"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="distributorCustomName" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="distributorPreset" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isrc" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="iswc" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="notes" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="phase" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="primaryArtist" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="primaryContributionsRaw" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="primarySongwriter" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="primarySplitsMaster" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="100"/>
+        <attribute name="primarySplitsPublishing" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="100"/>
+        <attribute name="mediaLibraryPersistentID" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="NO" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="upc" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <relationship name="externalLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SongLinkEntity" inverseName="song" inverseEntity="SongLinkEntity"/>
+        <relationship name="songLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SongCollaboratorLinkEntity" inverseName="song" inverseEntity="SongCollaboratorLinkEntity"/>
+    </entity>
+    <entity name="SongLinkEntity" representedClassName="SongLinkEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="NO" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="urlString" optional="NO" attributeType="String" usesScalarValueType="NO"/>
+        <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SongEntity" inverseName="externalLinks" inverseEntity="SongEntity"/>
+    </entity>
+    <entity name="SongCollaboratorLinkEntity" representedClassName="SongCollaboratorLinkEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="contributionsRaw" optional="YES" attributeType="String" usesScalarValueType="NO"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="masterSplit" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="0"/>
+        <attribute name="publishingSplit" optional="NO" attributeType="Double" usesScalarValueType="YES" defaultValueString="0"/>
+        <relationship name="collaborator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CollaboratorEntity" inverseName="links" inverseEntity="CollaboratorEntity"/>
+        <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SongEntity" inverseName="songLinks" inverseEntity="SongEntity"/>
+    </entity>
+    <elements>
+        <element name="UserProfileEntity" positionX="-162" positionY="-90" width="128" height="165"/>
+        <element name="CollaboratorEntity" positionX="50" positionY="-72" width="128" height="180"/>
+        <element name="SongEntity" positionX="-60" positionY="72" width="128" height="464"/>
+        <element name="SongLinkEntity" positionX="336" positionY="72" width="128" height="120"/>
+        <element name="SongCollaboratorLinkEntity" positionX="204" positionY="126" width="128" height="133"/>
+    </elements>
+</model>
